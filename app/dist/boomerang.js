@@ -48,23 +48,23 @@ angular.module('gdgXBoomerang')
 .factory('Config', function () {
     return {
         // TODO Modify these to configure your app
-        'name'          : 'GDG Space Coast',
-        'id'            : '103959793061819610212',
-        'googleApi'     : 'AIzaSyA9ALjr2iWvhf3Rsz9-bH0cEcDcrdkpuAg',
-        'pwaId'         : '5915725140705884785', // Picasa Web Album id, must belong to Google+ id above
-        'domain'        : 'http://www.gdgspacecoast.org',
-        'twitter'       : 'gdgspacecoast',
-        'facebook'      : 'gdgspacecoast',
-        'youtube'       : 'UCkiYHK3IZMk5XsYZ626b9Rw',
-        'meetup'        : 'gdgspacecoast',
+        'name'          : 'GDG Wellington',
+        'id'            : '110276737562460152992',
+        'googleApi'     : 'AIzaSyDhTqAFaMkLDAjKJd9CvItG4tLhQW_0GIo',
+        'pwaId'         : '6278826211524490033', // Picasa Web Album id, must belong to Google+ id above
+        'domain'        : 'http://www.gdg.nz',
+        'twitter'       : 'gdgwellington',
+        'facebook'      : '',
+        'youtube'       : '',
+        'meetup'        : 'GDG-Wellington',
         // Change to 'EEEE, MMMM d, y - H:mm' for 24 hour time format.
         'dateFormat'    : 'EEEE, MMMM d, y - h:mm a',
         'cover' : {
-            title: 'Android Development for Beginners',
-            subtitle: 'Google Developers Study Jams is a free series of global, community-run, in-person study groups.',
+            title: 'Worldwide GDG Events',
+            subtitle: 'Directory of developer events organized by tags and displayed on a global map.',
             button: {
-                text: 'Learn More',
-                url: 'http://developerstudyjams.com/'
+                text: 'Find local events',
+                url: 'http://gdg.events/'
             }
         },
         'activities': {
@@ -107,32 +107,6 @@ angular.module('gdgXBoomerang')
     function registerNavListener(listenerToRegister) {
         navListener = listenerToRegister;
     }
-});
-
-angular.module('gdgXBoomerang')
-.controller('AboutController', function ($http, $sce, Config, NavService) {
-    var vm = this;
-    vm.loading = true;
-    NavService.setNavTab(0);
-    vm.cover = Config.cover;
-
-    $http.jsonp('https://www.googleapis.com/plus/v1/people/' + Config.id +
-            '?callback=JSON_CALLBACK&fields=aboutMe%2Ccover%2Cimage%2CplusOneCount&key=' + Config.googleApi).
-        success(function (data) {
-            vm.desc = data.aboutMe;
-            $sce.trustAsHtml(vm.desc);
-
-            if (data.cover && data.cover.coverPhoto.url) {
-                vm.cover.url = data.cover.coverPhoto.url;
-            }
-            vm.loading = false;
-            vm.status = 'ready';
-        })
-        .error(function (error) {
-            vm.desc = 'Sorry, we failed to retrieve the About text from the Google+ API.';
-            vm.loading = false;
-            vm.status = 'ready';
-        });
 });
 
 angular.module('gdgXBoomerang')
@@ -226,6 +200,32 @@ angular.module('gdgXBoomerang')
     if (Config.activities.designSprints) {
         vm.activities.push(activityList.designSprints);
     }
+});
+
+angular.module('gdgXBoomerang')
+.controller('AboutController', function ($http, $sce, Config, NavService) {
+    var vm = this;
+    vm.loading = true;
+    NavService.setNavTab(0);
+    vm.cover = Config.cover;
+
+    $http.jsonp('https://www.googleapis.com/plus/v1/people/' + Config.id +
+            '?callback=JSON_CALLBACK&fields=aboutMe%2Ccover%2Cimage%2CplusOneCount&key=' + Config.googleApi).
+        success(function (data) {
+            vm.desc = data.aboutMe;
+            $sce.trustAsHtml(vm.desc);
+
+            if (data.cover && data.cover.coverPhoto.url) {
+                vm.cover.url = data.cover.coverPhoto.url;
+            }
+            vm.loading = false;
+            vm.status = 'ready';
+        })
+        .error(function (error) {
+            vm.desc = 'Sorry, we failed to retrieve the About text from the Google+ API.';
+            vm.loading = false;
+            vm.status = 'ready';
+        });
 });
 
 angular.module('gdgXBoomerang')
@@ -501,33 +501,6 @@ angular.module('gdgXBoomerang')
         });
 });
 
-'use strict';
-
-angular.module('gdgXBoomerang')
-.directive('gplusPerson', function ($http, $filter, Config) {
-    return {
-        restrict: 'EA',
-        templateUrl: 'app/organizers/components/gplus_person.html',
-        scope: {
-            gplusId: '='
-        },
-        link: function (scope) {
-            scope.$watch('gplusId', function (oldVal, newVal) {
-                if (newVal) {
-                    $http.jsonp('https://www.googleapis.com/plus/v1/people/' + newVal +
-                        '?callback=JSON_CALLBACK&fields=aboutMe%2CdisplayName%2Cimage&key=' + Config.googleApi)
-                        .success(function (data) {
-                            if (data && data.image && data.image.url) {
-                                data.image.url = data.image.url.replace('sz=50', 'sz=170');
-                            }
-                            scope.person = data;
-                        });
-                }
-            });
-        }
-    };
-});
-
 angular.module('gdgXBoomerang')
 .directive('gplusAlbum', function () {
     return {
@@ -609,5 +582,32 @@ angular.module('gdgXBoomerang')
 .directive('newsItemFooter', function () {
     return {
         templateUrl: 'app/news/components/newsItemFooter.html'
+    };
+});
+
+'use strict';
+
+angular.module('gdgXBoomerang')
+.directive('gplusPerson', function ($http, $filter, Config) {
+    return {
+        restrict: 'EA',
+        templateUrl: 'app/organizers/components/gplus_person.html',
+        scope: {
+            gplusId: '='
+        },
+        link: function (scope) {
+            scope.$watch('gplusId', function (oldVal, newVal) {
+                if (newVal) {
+                    $http.jsonp('https://www.googleapis.com/plus/v1/people/' + newVal +
+                        '?callback=JSON_CALLBACK&fields=aboutMe%2CdisplayName%2Cimage&key=' + Config.googleApi)
+                        .success(function (data) {
+                            if (data && data.image && data.image.url) {
+                                data.image.url = data.image.url.replace('sz=50', 'sz=170');
+                            }
+                            scope.person = data;
+                        });
+                }
+            });
+        }
     };
 });
