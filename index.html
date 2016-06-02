@@ -32,7 +32,6 @@
     </head>
     <body ng-controller="MainController as mc">
 
-        <!-- TODO Edit here to update your snippet for sharing. -->
         <span itemprop="name" style="display: none;">GDG Wellington</span>
         <span itemprop="description" style="display: none;">Google Developer Group Wellington is your friendly, local, and inclusive Android and Google meetup. We welcome all tech folks.</span>
         <img itemprop="image" style="display: none;" src="app/images/GDG-X-Boomerang-snippet.png">
@@ -42,7 +41,7 @@
                 <md-button class="md-icon-button" hide-gt-sm ng-click="$mdSidenav('left').open()" flex="none">
                     <md-icon>menu</md-icon>
                 </md-button>
-                <h2 hide-sm>
+                <h2 hide-sm hide-xs>
                     <span ng-cloak>{{ mc.chapterName }}</span>
                 </h2>
                 <span flex></span>
@@ -73,7 +72,7 @@
             </h2>
         </md-toolbar>
 
-        <md-tabs class="navTabs" md-selected="mc.navTab" md-stretch-tabs="never" hide-sm>
+        <md-tabs class="navTabs" md-selected="mc.navTab" md-stretch-tabs="never" hide-sm hide-xs>
             <md-tab id="home-tab"><a class="navTabLink" href="#!/home">Home</a></md-tab>
             <md-tab id="news-tab"><a class="navTabLink" href="#!/news">News</a></md-tab>
             <md-tab id="events-tab"><a class="navTabLink" href="#!/events">Events</a></md-tab>
@@ -111,8 +110,8 @@
           </md-content>
         </md-sidenav>
 
-        <div layout layout-align="center start" ng-style="{ 'margin': $mdMedia('gt-md') ? '8px' : '0' }">
-            <div ng-view flex-sm="100" flex-md="100" flex-lg="90" flex-gt-lg="85"></div>
+        <div layout layout-margin layout-align="center start">
+            <div ng-view flex-sm="100" flex-md="90" flex-lg="80" flex-gt-lg="75"></div>
         </div>
     </body>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

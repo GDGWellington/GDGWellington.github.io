@@ -1,11 +1,10 @@
-<md-whiteframe class="md-whiteframe-1dp" layout="column"
-               ng-style="{ 'margin': $mdMedia('gt-md') ? '8px' : '0 0 4px 0' }">
-    <md-toolbar flex>
-        <h2 class="md-toolbar-tools">
+<md-whiteframe class="md-whiteframe-z1 ng-scope layout-column" style="margin: 8px">
+    <md-toolbar class="flex">
+        <h2 class="md-toolbar-tools ng-binding">
             Announcement: {{ vm.cover.title }}
         </h2>
     </md-toolbar>
-    <div layout="column" layout-padding layout-align="center center">
+    <div class="layout-padding layout-align-center-center layout-column">
         <p>{{ vm.cover.subtitle }}</p>
         <a ng-href="{{ vm.cover.button.url }}" target="_blank">
             <md-button class="md-raised md-accent">
@@ -15,8 +14,7 @@
     </div>
 </md-whiteframe>
 <div class="gdg_loading" ng-show="vm.loading"></div>
-<md-card class="description-card" ng-hide="vm.loading"
-         ng-style="{ 'margin': $mdMedia('gt-md') ? '8px' : '0 0 4px 0' }">
+<md-card class="description-card ng-scope" ng-hide="vm.loading">
     <img ng-show="vm.cover.url" ng-src="{{ vm.cover.url }}" alt="Google+ Cover Image">
     <div id="cover" ng-show="vm.cover.url">
 
@@ -25,38 +23,38 @@
         <div ng-bind-html="vm.desc"></div>
     </md-card-content>
 </md-card>
-<md-card layout="column" ng-style="{ 'margin': $mdMedia('gt-md') ? '8px' : '0 0 4px 0' }">
+<md-card class="ng-scope layout-column">
     <md-toolbar>
         <h2 class="md-toolbar-tools">
             Sponsors
         </h2>
     </md-toolbar>
-    <div layout layout-wrap>
-        <div flex-sm="100" flex-gt-sm="20" layout="column" layout-align="center center" layout-padding>
-            <a href="https://developers.google.com/">
-                <img class="sponsor" src="/app/images/Google-Developers.png" alt="Google Developers"
-                     title="Google Developers">
-            </a>
-        </div>
-        <div flex-sm="100" flex-gt-sm="20" layout="column" layout-align="center center" layout-padding>
-            <a href="http://www.trademe.co.nz">
-                <img class="sponsor" src="/app/images/trademe.jpeg" alt="Trade Me" title="Trade Me">
-            </a>
-        </div>
-        <div flex-sm="100" flex-gt-sm="20" layout="column" layout-align="center center" layout-padding>
-            <a href="http://www.powershop.com">
-                <img class="sponsor" src="/app/images/powershop.jpeg" alt="Powershop" title="Powershop">
-            </a>
-        </div>
-        <div flex-sm="100" flex-gt-sm="20" layout="column" layout-align="center center" layout-padding>
-            <a href="http://www.xero.com/">
-                <img class="sponsor" src="/app/images/xero.jpeg" alt="Xero" title="Xero">
-            </a>
-        </div>
-        <div flex-sm="100" flex-gt-sm="20" layout="column" layout-align="center center" layout-padding>
-            <a href="http://www.paperkite.co.nz/">
-                <img class="sponsor" src="/app/images/paperkite.jpeg" alt="PaperKite" title="PaperKite">
-            </a>
-        </div>
+    <div class="layout-wrap layout-row">
+
+        <a href="https://developers.google.com/">
+          <md-card>
+            <img class="sponsor" src="/app/images/Google-Developers.png" alt="Google Developers" title="Google Developers">
+          </md-card>
+        </a>
+        <a href="http://www.trademe.co.nz">
+          <md-card>
+            <img class="sponsor" src="/app/images/trademe.jpeg" alt="Trade Me" title="Trade Me">
+          </md-card>
+        </a>
+        <a href="http://www.powershop.com">
+          <md-card>
+            <img class="sponsor" src="/app/images/powershop.jpeg" alt="Powershop" title="Powershop">
+          </md-card>
+        </a>
+        <a href="http://www.xero.com/">
+          <md-card>
+            <img class="sponsor" src="/app/images/xero.jpeg" alt="Xero" title="Xero">
+          </md-card>
+        </a>
+        <a href="http://www.paperkite.co.nz/">
+          <md-card>
+            <img class="sponsor" src="/app/images/paperkite.jpeg" alt="PaperKite" title="PaperKite">
+          </md-card>
+        </a>
     </div>
 </md-card>
