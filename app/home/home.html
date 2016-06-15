@@ -1,18 +1,18 @@
-<md-whiteframe class="md-whiteframe-z1 ng-scope layout-column" style="margin: 8px">
-    <md-toolbar class="flex">
-        <h2 class="md-toolbar-tools ng-binding">
-            Announcement: {{ vm.cover.title }}
-        </h2>
-    </md-toolbar>
-    <div class="layout-padding layout-align-center-center layout-column">
-        <p>{{ vm.cover.subtitle }}</p>
-        <a ng-href="{{ vm.cover.button.url }}" target="_blank">
-            <md-button class="md-raised md-accent">
-                {{ vm.cover.button.text }}
-            </md-button>
-        </a>
-    </div>
-</md-whiteframe>
+<!--<md-whiteframe class="md-whiteframe-z1 ng-scope layout-column" style="margin: 8px">-->
+<!--    <md-toolbar class="flex">-->
+<!--        <h2 class="md-toolbar-tools ng-binding">-->
+<!--            Announcement: {{ vm.cover.title }}-->
+<!--        </h2>-->
+<!--    </md-toolbar>-->
+<!--    <div class="layout-padding layout-align-center-center layout-column">-->
+<!--        <p>{{ vm.cover.subtitle }}</p>-->
+<!--        <a ng-href="{{ vm.cover.button.url }}" target="_blank">-->
+<!--            <md-button class="md-raised md-accent">-->
+<!--                {{ vm.cover.button.text }}-->
+<!--            </md-button>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</md-whiteframe>-->
 <div class="gdg_loading" ng-show="vm.loading"></div>
 <md-card class="description-card ng-scope" ng-hide="vm.loading">
     <img ng-show="vm.cover.url" ng-src="{{ vm.cover.url }}" alt="Google+ Cover Image">
