@@ -1,7 +1,6 @@
 angular.module('gdgXBoomerang')
 .factory('Config', function () {
     return {
-        // TODO Modify these to configure your app
         'name'          : 'GDG Wellington',
         'id'            : '110276737562460152992',
         'googleApi'     : 'AIzaSyDhTqAFaMkLDAjKJd9CvItG4tLhQW_0GIo',
@@ -32,6 +31,5 @@ angular.module('gdgXBoomerang')
             roundTables: true
         },
         'HUB_IP': 'https://hub.gdgx.io'
-        // To update the snippet which is used for sharing, see the TODO in the index.html.
     };
 });
